@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English with Mixlass</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fff8f0;
+            color: #333;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ff8c00;
+        }
+        .subtitle {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        .task {
+            margin-bottom: 2rem;
+        }
+        .task-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .question-box {
+            background-color: #f8f8f8;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .question-box p {
+            margin-bottom: 0.5rem;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .input-group span {
+            margin-right: 0.5rem;
+        }
+        .input-group input {
+            flex-grow: 1;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+        }
+        .input-group .result {
+            margin-left: 0.5rem;
+            font-weight: 600;
+        }
+        .input-group .correct {
+            color: #28a745;
+        }
+        .input-group .incorrect {
+            color: #dc3545;
+        }
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            margin-top: 0.5rem;
+        }
+        .radio-group label {
+            margin-bottom: 0.25rem;
+        }
+        .chat-container {
+            border: 2px solid #337ab7;
+            border-radius: 1rem;
+            padding: 1rem;
+            background-color: #f0f4f7;
+        }
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #337ab7;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.75rem 0.75rem 0 0;
+            font-weight: 600;
+        }
+        .chat-message {
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 0.75rem;
+            background-color: #d1e1f1;
+            width: fit-content;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+        .btn-check {
+            background-color: #ff8c00;
+            color: white;
+        }
+        .btn-check:hover {
+            background-color: #e57e00;
+        }
+        .btn-reset {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .btn-reset:hover {
+            background-color: #e0e0e0;
+        }
+        .explanation {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid #ff8c00;
+            display: none;
+        }
+        .error-message {
+            color: #dc3545;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1 class="title">English with Mixlass</h1>
+        <p class="subtitle">LEARN.SHARE.CONNECT</p>
+    </div>
+
+    <!-- Task 2: Choose the correct alternative -->
+    <div class="task">
+        <h2 class="task-title">2. Choose the correct alternative.</h2>
+        <div class="question-list">
+            <div class="question-box">
+                <p>1. Iulia is a bus officer / driver / assistant.</p>
+                <div class="radio-group" data-answer="driver">
+                    <label><input type="radio" name="q2_1" value="officer"> officer</label>
+                    <label><input type="radio" name="q2_1" value="driver"> driver</label>
+                    <label><input type="radio" name="q2_1" value="assistant"> assistant</label>
+                </div>
+                <div class="result correct"></div>
+                <div class="explanation">Correct answer: driver. A bus driver drives a bus.</div>
+            </div>
+            <div class="question-box">
+                <p>2. Yusuf is an office driver / worker / player.</p>
+                <div class="radio-group" data-answer="worker">
+                    <label><input type="radio" name="q2_2" value="driver"> driver</label>
+                    <label><input type="radio" name="q2_2" value="worker"> worker</label>
+                    <label><input type="radio" name="q2_2" value="player"> player</label>
+                </div>
+                <div class="result correct"></div>
+                <div class="explanation">Correct answer: worker. An office worker works in an office.</div>
+            </div>
+            <div class="question-box">
+                <p>3. Anouk is a police officer / player / driver.</p>
+                <div class="radio-group" data-answer="officer">
+                    <label><input type="radio" name="q2_3" value="officer"> officer</label>
+                    <label><input type="radio" name="q2_3" value="player"> player</label>
+                    <label><input type="radio" name="q2_3" value="driver"> driver</label>
+                </div>
+                <div class="result correct"></div>
+                <div class="explanation">Correct answer: officer. A police officer is a member of the police force.</div>
+            </div>
+            <div class="question-box">
+                <p>4. Paula is a football assistant / worker / player.</p>
+                <div class="radio-group" data-answer="player">
+                    <label><input type="radio" name="q2_4" value="assistant"> assistant</label>
+                    <label><input type="radio" name="q2_4" value="worker"> worker</label>
+                    <label><input type="radio" name="q2_4" value="player"> player</label>
+                </div>
+                <div class="result correct"></div>
+                <div class="explanation">Correct answer: player. A football player plays football.</div>
+            </div>
+            <div class="question-box">
+                <p>5. John is a digital driver / designer / player.</p>
+                <div class="radio-group" data-answer="designer">
+                    <label><input type="radio" name="q2_5" value="driver"> driver</label>
+                    <label><input type="radio" name="q2_5" value="designer"> designer</label>
+                    <label><input type="radio" name="q2_5" value="player"> player</label>
+                </div>
+                <div class="result correct"></div>
+                <div class="explanation">Correct answer: designer. A digital designer creates digital art or websites.</div>
+            </div>
+            <div class="question-box">
+                <p>6. João is a shop officer / player / assistant.</p>
+                <div class="radio-group" data-answer="assistant">
+                    <label><input type="radio" name="q2_6" value="officer"> officer</label>
+                    <label><input type="radio" name="q2_6" value="player"> player</label>
+                    <label><input type="radio" name="q2_6" value="assistant"> assistant</label>
+                </div>
+                <div class="result correct"></div>
+                <div class="explanation">Correct answer: assistant. A shop assistant helps customers in a shop.</div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-8">
+
+    <!-- Task 3: Choose the correct word -->
+    <div class="task">
+        <h2 class="task-title">3. Choose the correct word to complete the messages.</h2>
+        <div class="chat-container">
+            <div class="chat-header">
+                &lt; Chat
+            </div>
+            <!-- Changed input to radio buttons for Task 3 -->
+            <div class="chat-message">1. Hi! I'm Sylvie. I'm <span class="radio-group-inline" data-answer="an"><label><input type="radio" name="q3_1" value="a"> a</label> / <label><input type="radio" name="q3_1" value="an"> an</label></span> artist.</div>
+            <div class="chat-message">2. Hi, I'm Carol. I'm <span class="radio-group-inline" data-answer="a"><label><input type="radio" name="q3_2" value="a"> a</label> / <label><input type="radio" name="q3_2" value="an"> an</label></span> businessperson.</div>
+            <div class="chat-message">3. Hello everyone. I'm Miko. I'm <span class="radio-group-inline" data-answer="an"><label><input type="radio" name="q3_3" value="a"> a</label> / <label><input type="radio" name="q3_3" value="an"> an</label></span> office worker.</div>
+            <div class="chat-message">4. Hello, I'm Roberto. I'm <span class="radio-group-inline" data-answer="a"><label><input type="radio" name="q3_4" value="a"> a</label> / <label><input type="radio" name="q3_4" value="an"> an</label></span> nurse.</div>
+            <div class="chat-message">5. Hello, I'm Seo. I'm <span class="radio-group-inline" data-answer="a"><label><input type="radio" name="q3_5" value="a"> a</label> / <label><input type="radio" name="q3_5" value="an"> an</label></span> police officer.</div>
+            <div class="chat-message">6. Hi, I'm Maddi. I'm <span class="radio-group-inline" data-answer="a"><label><input type="radio" name="q3_6" value="a"> a</label> / <label><input type="radio" name="q3_6" value="an"> an</label></span> taxi driver.</div>
+        </div>
+    </div>
+
+    <hr class="my-8">
+
+    <!-- Task 4: Present simple be -->
+    <div class="task">
+        <h2 class="task-title">4. Choose the correct word to complete the sentences.</h2>
+        <div class="question-box">
+            <p>1. Elsa ___ French. She's from Italy.</p>
+            <div class="radio-group" data-answer="isn't">
+                <label><input type="radio" name="q4_1" value="is"> is</label>
+                <label><input type="radio" name="q4_1" value="isn't"> isn't</label>
+                <label><input type="radio" name="q4_1" value="aren't"> aren't</label>
+            </div>
+            <div class="result correct"></div>
+            <div class="explanation">Correct answer: isn't. The second sentence says she's from Italy, so the first must be a negative statement about her nationality.</div>
+        </div>
+        <div class="question-box">
+            <p>2. The Taj Mahal ___ in India.</p>
+            <div class="radio-group" data-answer="is">
+                <label><input type="radio" name="q4_2" value="are"> are</label>
+                <label><input type="radio" name="q4_2" value="am"> am</label>
+                <label><input type="radio" name="q4_2" value="is"> is</label>
+            </div>
+            <div class="result correct"></div>
+            <div class="explanation">Correct answer: is. "The Taj Mahal" is a singular subject, so it takes the singular form of "be", which is "is".</div>
+        </div>
+        <div class="question-box">
+            <p>3. David isn't an actor. ___ an artist.</p>
+            <div class="radio-group" data-answer="He's">
+                <label><input type="radio" name="q4_3" value="It's"> It's</label>
+                <label><input type="radio" name="q4_3" value="He's"> He's</label>
+                <label><input type="radio" name="q4_3" value="is"> is</label>
+            </div>
+            <div class="result correct"></div>
+            <div class="explanation">Correct answer: He's. The second sentence is a positive statement about David's job, using the contraction "He's".</div>
+        </div>
+        <div class="question-box">
+            <p>4. ___ Shola an office worker?</p>
+            <div class="radio-group" data-answer="Is">
+                <label><input type="radio" name="q4_4" value="Is"> Is</label>
+                <label><input type="radio" name="q4_4" value="Are"> Are</label>
+                <label><input type="radio" name="q4_4" value="What"> What</label>
+            </div>
+            <div class="result correct"></div>
+            <div class="explanation">Correct answer: Is. This is a yes/no question about a singular subject ("Shola"), so it starts with "Is".</div>
+        </div>
+        <div class="question-box">
+            <p>5. ___ livre in English?</p>
+            <div class="radio-group" data-answer="What's">
+                <label><input type="radio" name="q4_5" value="Where"> Where</label>
+                <label><input type="radio" name="q4_5" value="What"> What</label>
+                <label><input type="radio" name="q4_5" value="What's"> What's</label>
+            </div>
+            <div class="result correct"></div>
+            <div class="explanation">Correct answer: What's. The question asks for the meaning of a word, so it should start with "What's" (What is).</div>
+        </div>
+        <div class="question-box">
+            <p>6. Machu Picchu isn't in Argentina. ___ in Peru.</p>
+            <div class="radio-group" data-answer="It's">
+                <label><input type="radio" name="q4_6" value="He's"> He's</label>
+                <label><input type="radio" name="q4_6" value="It's"> It's</label>
+                <label><input type="radio" name="q4_6" value="She's"> She's</label>
+            </div>
+            <div class="result correct"></div>
+            <div class="explanation">Correct answer: It's. "Machu Picchu" is a place, so it takes the pronoun "It". The second sentence is a positive statement about its location.</div>
+        </div>
+    </div>
+    
+    <hr class="my-8">
+
+    <!-- Task 6: Use the prompts and be to write sentences. -->
+    <div class="task">
+        <h2 class="task-title">6. Use the prompts and be to write sentences. Use contractions where possible.</h2>
+        <div class="question-box">
+            <p>1. she / from / Beijing.</p>
+            <p>She's from Beijing.</p>
+        </div>
+        <div class="question-box">
+            <p>2. he / a businessperson.</p>
+            <input type="text" class="text-input" data-answer="he's a businessperson">
+        </div>
+        <div class="question-box">
+            <p>3. it / not / in London.</p>
+            <input type="text" class="text-input" data-answer="it's not in London" data-alt-answer="it isn't in London">
+        </div>
+        <div class="question-box">
+            <p>4. where / Sophie / from?</p>
+            <input type="text" class="text-input" data-answer="where's sophie from" data-alt-answer="where is sophie from">
+        </div>
+        <div class="question-box">
+            <p>5. he / a teacher?</p>
+            <input type="text" class="text-input" data-answer="is he a teacher">
+        </div>
+        <div class="question-box">
+            <p>6. what / Jack's / job?</p>
+            <input type="text" class="text-input" data-answer="what's jack's job" data-alt-answer="what is jack's job">
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button class="btn btn-check" onclick="checkAnswers()">Проверить</button>
+        <button class="btn btn-reset" onclick="resetAnswers()">Сбросить</button>
+    </div>
+</div>
+
+<script>
+    function normalizeText(text) {
+        // Normalizes text inputs by converting to lowercase and removing punctuation/whitespace.
+        return text.toLowerCase().replace(/[\s\.,\?!']/g, '');
+    }
+
+    function checkAnswers() {
+        // Handle all radio button groups (Tasks 2, 3, and 4).
+        const radioGroups = document.querySelectorAll('.radio-group, .radio-group-inline');
+        radioGroups.forEach(group => {
+            const correctAnswer = group.dataset.answer;
+            const selectedOption = group.querySelector('input:checked');
+            // Check for the correct parent to append the result and explanation
+            const parent = group.closest('.question-box') || group.closest('.chat-message');
+            
+            // Remove previous result/explanation elements if they exist
+            const existingResult = parent.querySelector('.result');
+            if (existingResult) {
+                existingResult.remove();
+            }
+            const existingExplanation = parent.querySelector('.explanation');
+            if (existingExplanation) {
+                existingExplanation.remove();
+            }
+
+            const resultElement = document.createElement('div');
+            resultElement.className = 'result';
+            const explanationElement = document.createElement('div');
+            explanationElement.className = 'explanation';
+            explanationElement.textContent = 'Правильный ответ: ' + correctAnswer;
+            
+            if (selectedOption) {
+                if (selectedOption.value === correctAnswer) {
+                    resultElement.textContent = 'Правильно!';
+                    resultElement.classList.add('correct');
+                } else {
+                    resultElement.textContent = 'Неправильно.';
+                    resultElement.classList.add('incorrect');
+                    explanationElement.style.display = 'block';
+                    parent.appendChild(explanationElement);
+                }
+            } else {
+                resultElement.textContent = 'Вопрос пропущен.';
+                resultElement.classList.add('incorrect');
+                explanationElement.style.display = 'block';
+                parent.appendChild(explanationElement);
+            }
+            parent.appendChild(resultElement);
+        });
+
+        // Handle text input tasks (Task 6)
+        const textInputs = document.querySelectorAll('.text-input');
+        textInputs.forEach(input => {
+            const userAnswer = normalizeText(input.value);
+            const correctAnswers = [normalizeText(input.dataset.answer)];
+            if (input.dataset.altAnswer) {
+                correctAnswers.push(normalizeText(input.dataset.altAnswer));
+            }
+            
+            const parent = input.closest('.question-box');
+            
+            // Remove previous result/explanation elements if they exist
+            const existingResult = parent.querySelector('.result');
+            if (existingResult) {
+                existingResult.remove();
+            }
+            const existingExplanation = parent.querySelector('.explanation');
+            if (existingExplanation) {
+                existingExplanation.remove();
+            }
+
+            const resultElement = document.createElement('div');
+            resultElement.className = 'result';
+            const explanationElement = document.createElement('div');
+            explanationElement.className = 'explanation';
+
+            if (userAnswer === '') {
+                resultElement.textContent = 'Вопрос пропущен.';
+                resultElement.className = 'error-message';
+                explanationElement.textContent = `Правильный ответ: ${input.dataset.answer}`;
+                explanationElement.style.display = 'block';
+                parent.appendChild(resultElement);
+                parent.appendChild(explanationElement);
+            } else if (correctAnswers.includes(userAnswer)) {
+                resultElement.textContent = 'Правильно!';
+                resultElement.className = 'correct';
+                parent.appendChild(resultElement);
+            } else {
+                resultElement.textContent = `Неправильно. Правильный ответ: ${input.dataset.answer}`;
+                resultElement.className = 'incorrect';
+                parent.appendChild(resultElement);
+            }
+        });
+    }
+
+    function resetAnswers() {
+        // Removes all dynamically added result and explanation elements
+        document.querySelectorAll('.result, .explanation').forEach(el => el.remove());
+
+        // Unchecks all radio buttons
+        document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
+
+        // Clears all text inputs
+        document.querySelectorAll('.text-input').forEach(el => el.value = '');
+    }
+</script>
+
+</body>
+</html>
